@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pywt
 
-samplerate, data = wavfile.read('sample1.wav');  # Reading the audio file
+samplerate, data = wavfile.read('sample.wav');  # Reading the audio file
 t = np.arange(len(data)) / float(samplerate);  # Getting Time
 data = data/max(data);  # Normalize Audio Data
 
@@ -13,6 +13,7 @@ y = pywt.idwt(cA, cD, 'bior6.8', 'per')  # IDWT
 
 wavfile.write('sampleR.wav', samplerate, y);  # writing y as Audio
 wavfile.write('samplecD.wav', samplerate, cD);  # writing cD as Audio
+wavfile.write('samplecA.wav', samplerate, cA);  # writing cA as Audio
 
 # Formatting for figure
 L = len(data);
