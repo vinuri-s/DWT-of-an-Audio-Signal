@@ -4,12 +4,19 @@ import numpy as np
 import pywt
 
 samplerate, data = wavfile.read('sample.wav');  # Reading the audio file
-t = np.arange(len(data)) / float(samplerate);  # Getting Time
+t = np.arange(len(data)) / float(samplerate);  # Retrieving Time
+
+print("data -> ", data)
+print("data length -> ", len(data))
+print("np.arange(len(data)) -> ", np.arange(len(data)))
+print("float(samplerate) -> ", float(samplerate))
+print("time -> ", t)
+
 data = data/max(data);  # Normalize Audio Data
+print("normalized data -> ", data)
 
 cA, cD = pywt.dwt(data, 'bior6.8', 'per');  # DWT
-
-y = pywt.idwt(cA, cD, 'bior6.8', 'per')  # IDWT
+y = pywt.idwt(cA, cD, 'bior6.8', 'per');  # IDWT
 
 wavfile.write('sampleR.wav', samplerate, y);  # writing y as Audio
 wavfile.write('samplecD.wav', samplerate, cD);  # writing cD as Audio

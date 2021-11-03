@@ -8,7 +8,7 @@ t = np.arange(len(data)) / float(samplerate);  # Getting Time
 data = data/max(data);  # Normalize Audio Data
 
 coeffs = pywt.wavedec(data, 'bior6.8', mode='sym', level=2);  # DWT
-cA2, cD2, cD1=coeffs
+cA2, cD2, cD1 = coeffs
 
 y = pywt.waverec(coeffs, 'bior6.8', mode='sym')  # IDWT
 
